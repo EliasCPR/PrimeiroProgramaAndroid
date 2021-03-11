@@ -20,13 +20,27 @@ class MainActivity : AppCompatActivity() {
 
         button_calcular.setOnClickListener {
 
-            calcularIMC()
+            if (validacao() == true) {
+                calcularIMC()
+            }
 
         }
 
 
 
 
+    }
+
+    fun validacao(): Boolean {
+        if (edit_peso.text.isEmpty()) {
+            edit_peso.error = "PREENCHA ISSO!!"
+            return false
+        } else if (edit_altura.text.isEmpty()) {
+            edit_altura.error = "PREENCHA ISSO!!"
+            return false
+        }else {
+            return true
+        }
     }
 
     fun calcularIMC(){
@@ -48,6 +62,7 @@ class MainActivity : AppCompatActivity() {
         text_resultado.text = limpar
         edit_altura.text = limpar
         edit_peso.text = limpar
+        edit_peso.requestFocus()
 
     }
 
